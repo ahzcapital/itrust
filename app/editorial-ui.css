@@ -1,0 +1,253 @@
+/* Trust.Me — editorial marketplace layer
+   Intent: quiet, institutional, verification-first. This file refines the existing UI
+   without replacing the application's functionality or component architecture.
+*/
+:root {
+  --tm-editorial-ink: #0b0b0a;
+  --tm-editorial-card: #141413;
+  --tm-editorial-muted-fill: #1c1c1a;
+  --tm-editorial-paper: #f4f1ea;
+  --tm-editorial-stone: #e8e2d6;
+  --tm-editorial-muted: #9c9890;
+  --tm-editorial-line: rgba(244,241,234,.11);
+  --tm-editorial-line-strong: rgba(244,241,234,.18);
+  --tm-editorial-gold: #b7a27a;
+}
+
+/* Public chrome */
+.nav {
+  max-width: none;
+  height: 70px;
+  padding: 0 clamp(20px, 5vw, 72px);
+  background: rgba(11,11,10,.94);
+  border-bottom: 1px solid var(--tm-editorial-line);
+  backdrop-filter: blur(14px);
+}
+.navLinks { gap: clamp(16px,2.2vw,32px); }
+.navLinks a, .login, .searchBtn { transition: color 180ms ease, opacity 180ms ease; }
+.navLinks a:hover, .login:hover, .searchBtn:hover { color: var(--tm-editorial-paper); }
+.logo { letter-spacing: -.055em; }
+
+.primary, .secondary {
+  border-radius: 10px;
+  min-height: 44px;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+.primary { background: var(--tm-editorial-paper); color: var(--tm-editorial-ink); }
+.primary:hover { background: #fffdf8; transform: translateY(-1px); }
+.secondary { border-color: var(--tm-editorial-line-strong); }
+.secondary:hover { border-color: rgba(244,241,234,.30); }
+
+/* Editorial hero */
+.hero {
+  max-width: none;
+  min-height: 680px;
+  grid-template-columns: minmax(0,1.05fr) minmax(340px,.95fr);
+  gap: clamp(30px,7vw,110px);
+  padding: clamp(72px,9vw,130px) clamp(24px,9vw,140px);
+  background: var(--tm-editorial-ink);
+  border-bottom: 1px solid var(--tm-editorial-line);
+}
+.heroCopy { max-width: 720px; }
+.eyebrow, .kicker { color: var(--tm-editorial-muted); letter-spacing: .16em; }
+.eyebrow svg { color: var(--tm-editorial-paper); }
+.hero h1 {
+  color: var(--tm-editorial-paper);
+  font-size: clamp(56px, 7.2vw, 102px);
+  letter-spacing: -.055em;
+  line-height: .94;
+  margin-bottom: 28px;
+}
+.hero h1 em { color: var(--tm-editorial-paper); font-style: normal; }
+.heroCopy > p { max-width: 600px; color: var(--tm-editorial-muted); font-size: clamp(16px,1.45vw,19px); line-height: 1.75; }
+.heroCtas { gap: 10px; }
+.trustLine { color: var(--tm-editorial-muted); border-top: 1px solid var(--tm-editorial-line); padding-top: 16px; max-width: 420px; }
+.heroGlow { display: block; width: 620px; height: 620px; right: -230px; top: -260px; background: radial-gradient(circle, rgba(183,162,122,.09), transparent 66%); }
+.heroVisual { justify-content: center; }
+.passportCard {
+  width: min(350px, 90%);
+  height: 440px;
+  background: linear-gradient(145deg,#191918,#10100f);
+  border: 1px solid var(--tm-editorial-line-strong);
+  border-radius: 18px;
+  box-shadow: 0 35px 100px rgba(0,0,0,.45);
+  transform: rotate(2.5deg);
+}
+.passportCard:before { border-color: var(--tm-editorial-line); border-radius: 12px; }
+.passportSeal { border-color: var(--tm-editorial-line-strong); color: var(--tm-editorial-stone); box-shadow: none; }
+.passportTitle { color: var(--tm-editorial-stone); }
+.passportLine { background: var(--tm-editorial-line); }
+.passportBottom { color: var(--tm-editorial-muted); }
+.passportBottom strong { color: var(--tm-editorial-paper); }
+
+/* Stats become institutional data strip */
+.stats {
+  max-width: none;
+  padding: 0 clamp(24px,9vw,140px);
+  background: var(--tm-editorial-card);
+  border-bottom: 1px solid var(--tm-editorial-line);
+}
+.stats div { padding: 26px 22px; border-right: 1px solid var(--tm-editorial-line); }
+.stats strong { color: var(--tm-editorial-paper); }
+.stats span { color: var(--tm-editorial-muted); }
+
+/* Marketplace section */
+.section {
+  max-width: none;
+  padding: clamp(80px,10vw,140px) clamp(24px,9vw,140px);
+  background: var(--tm-editorial-ink);
+}
+.sectionHead { max-width: 1180px; margin: 0 auto 38px; }
+.section h2 { color: var(--tm-editorial-paper); font-size: clamp(42px,5vw,70px); letter-spacing: -.055em; }
+.section h2 em { color: var(--tm-editorial-paper); font-style: normal; }
+.textLink { color: var(--tm-editorial-muted); }
+.assetGrid { max-width: 1180px; margin: 0 auto; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
+.assetCard {
+  background: var(--tm-editorial-card);
+  border: 1px solid var(--tm-editorial-line);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: none;
+}
+.assetCard:hover { box-shadow: 0 25px 60px rgba(0,0,0,.28); border-color: var(--tm-editorial-line-strong); }
+.assetImage { height: 320px; filter: saturate(.62) brightness(.78); }
+.verified { background: rgba(11,11,10,.78); color: var(--tm-editorial-paper); border: 1px solid var(--tm-editorial-line-strong); border-radius: 7px; }
+.assetTypeOverlay { color: var(--tm-editorial-paper); }
+.assetInfo { padding: 22px; }
+.assetType { color: var(--tm-editorial-muted); }
+.assetInfo h3 { color: var(--tm-editorial-paper); font-size: 25px; }
+.assetInfo p { color: var(--tm-editorial-muted); }
+.assetFooter { border-color: var(--tm-editorial-line); }
+.assetFooter strong { color: var(--tm-editorial-paper); }
+
+/* Verification / Asset Passport */
+.passportSection {
+  max-width: none;
+  padding: clamp(90px,10vw,150px) clamp(24px,12vw,180px);
+  grid-template-columns: minmax(0,1.1fr) minmax(280px,.65fr);
+  background: var(--tm-editorial-muted-fill);
+  border-top: 1px solid var(--tm-editorial-line);
+  border-bottom: 1px solid var(--tm-editorial-line);
+}
+.passportText { max-width: 700px; }
+.passportText h2 { color: var(--tm-editorial-paper); font-size: clamp(44px,5.5vw,72px); letter-spacing: -.055em; }
+.passportText > p { color: var(--tm-editorial-muted); }
+.checks { border-top: 1px solid var(--tm-editorial-line); padding-top: 20px; }
+.checks span { color: var(--tm-editorial-stone); }
+.checks svg { color: var(--tm-editorial-paper); }
+.miniPassport {
+  background: var(--tm-editorial-paper);
+  color: var(--tm-editorial-ink);
+  border-radius: 4px;
+  box-shadow: 25px 35px 80px rgba(0,0,0,.34);
+  transform: rotate(3deg);
+}
+.miniPassport:after { border-color: rgba(11,11,10,.16); border-radius: 0; }
+.miniCircle { color: var(--tm-editorial-ink); border-color: rgba(11,11,10,.22); }
+.miniPassport h3 { color: var(--tm-editorial-ink); }
+.miniStamp { color: var(--tm-editorial-ink); border-color: rgba(11,11,10,.30); }
+
+/* Creator and closing CTA */
+.creatorTeaser {
+  max-width: none;
+  padding: clamp(75px,9vw,120px) clamp(24px,9vw,140px);
+  background: var(--tm-editorial-ink);
+  border-color: var(--tm-editorial-line);
+}
+.creatorTeaser h2 { color: var(--tm-editorial-paper); font-size: clamp(40px,4.8vw,62px); }
+.creatorTeaser p, .cta p { color: var(--tm-editorial-muted); }
+.cta { max-width: none; padding: clamp(100px,12vw,170px) 24px; background: var(--tm-editorial-card); border-top: 1px solid var(--tm-editorial-line); }
+.cta h2 { color: var(--tm-editorial-paper); font-size: clamp(44px,5vw,70px); }
+.cta > svg { color: var(--tm-editorial-stone); }
+footer { background: var(--tm-editorial-ink); border-top: 1px solid var(--tm-editorial-line); padding: 52px clamp(24px,9vw,140px); }
+
+/* Marketplace/detail pages share the same material language */
+.marketHero, .simpleHero, .creatorHero, .aboutHero, .sellHero, .formHero {
+  max-width: none;
+  padding: clamp(80px,9vw,130px) clamp(24px,9vw,140px) 55px;
+  background: var(--tm-editorial-ink);
+  border-bottom: 1px solid var(--tm-editorial-line);
+}
+.marketHero h1, .simpleHero h1, .creatorHero h1, .aboutHero h1, .sellHero h1, .formHero h1 { color: var(--tm-editorial-paper); font-size: clamp(52px,6.5vw,92px); }
+.marketHero p, .simpleHero p, .creatorHero p, .aboutHero p, .sellHero p, .formHero p { color: var(--tm-editorial-muted); }
+.marketSection { max-width: none; padding: 45px clamp(24px,9vw,140px) 110px; background: var(--tm-editorial-ink); }
+.marketSearch { background: var(--tm-editorial-card); border-color: var(--tm-editorial-line); color: var(--tm-editorial-paper); }
+.filter { background: transparent; border-color: var(--tm-editorial-line); color: var(--tm-editorial-muted); }
+.filter.active { background: var(--tm-editorial-paper); color: var(--tm-editorial-ink); }
+.resultCount { color: var(--tm-editorial-muted); }
+.emptyState, .detailPanel { background: var(--tm-editorial-card); border-color: var(--tm-editorial-line); }
+.detailWrap { max-width: none; padding: 35px clamp(24px,7vw,110px) 110px; background: var(--tm-editorial-ink); }
+.backLink { color: var(--tm-editorial-muted); }
+.detailIntro h1, .detailPrice, .detailPanel h2 { color: var(--tm-editorial-paper); }
+.detailLocation, .smallTrust, .detailPanel > p { color: var(--tm-editorial-muted); }
+.detailImage { border: 1px solid var(--tm-editorial-line); border-radius: 2px; }
+.detailFacts { border-color: var(--tm-editorial-line); }
+.detailFacts span { color: var(--tm-editorial-muted); }
+.detailFacts strong { color: var(--tm-editorial-paper); }
+.verificationPanel { background: var(--tm-editorial-muted-fill); border: 1px solid var(--tm-editorial-line); border-radius: 2px; }
+.verificationPanel .kicker, .verificationPanel p, .verificationPanel li { color: var(--tm-editorial-muted); }
+.verificationPanel li svg { color: var(--tm-editorial-paper); }
+.verificationSeal { color: var(--tm-editorial-paper); border-color: var(--tm-editorial-line-strong); }
+
+/* Application shell: same institution, more restrained chrome */
+.appSidebar { background: var(--tm-editorial-ink); border-color: var(--tm-editorial-line); backdrop-filter: none; }
+.appMain, .appFrame { background: var(--tm-editorial-ink); color: var(--tm-editorial-paper); }
+.appNav a { color: var(--tm-editorial-muted); border-radius: 6px; }
+.appNav a:hover { background: var(--tm-editorial-card); color: var(--tm-editorial-paper); }
+.appNav a.active { background: var(--tm-editorial-card); color: var(--tm-editorial-paper); box-shadow: inset 2px 0 var(--tm-editorial-stone); }
+.appSidebarBottom, .userMenu { border-color: var(--tm-editorial-line); }
+.userMenu { background: var(--tm-editorial-card); }
+.mobileAppHeader, .mobileBottomNav { background: rgba(11,11,10,.96); border-color: var(--tm-editorial-line); }
+
+/* Gentle editorial motion; never constant spectacle */
+.assetCard, .primary, .secondary, .textLink, .navLinks a { will-change: auto; }
+@media (prefers-reduced-motion: no-preference) {
+  .heroCopy { animation: tm-fade-up .7s cubic-bezier(.22,1,.36,1) both; }
+  .heroVisual { animation: tm-fade-in .9s .08s cubic-bezier(.22,1,.36,1) both; }
+}
+@keyframes tm-fade-up { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
+@keyframes tm-fade-in { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+
+/* Mobile is a composition, not a shrunken desktop */
+@media (max-width: 900px) {
+  .nav { height: 64px; padding: 0 18px; }
+  .navLinks { gap: 0; }
+  .hero { min-height: auto; grid-template-columns: 1fr; padding: 70px 20px 58px; gap: 54px; }
+  .hero h1 { font-size: clamp(52px,15vw,76px); }
+  .heroCopy > p { font-size: 15px; }
+  .heroVisual { justify-content: center; }
+  .passportCard { width: min(320px,92vw); height: 390px; }
+  .stats { grid-template-columns: repeat(2,1fr); padding: 0 20px 44px; }
+  .stats div { padding: 20px 14px; }
+  .stats div:first-child,.stats div:nth-child(2),.stats div:nth-child(3),.stats div:last-child { border-radius: 0; }
+  .section { padding: 70px 20px; }
+  .sectionHead { align-items: flex-start; gap: 20px; }
+  .sectionHead .textLink { margin-top: 10px; }
+  .assetGrid { grid-template-columns: 1fr; }
+  .assetImage { height: 270px; }
+  .passportSection { grid-template-columns: 1fr; padding: 78px 20px 90px; gap: 50px; }
+  .miniPassport { justify-self: center; }
+  .creatorTeaser { align-items: flex-start; flex-direction: column; padding: 70px 20px; }
+  .cta { padding: 90px 20px; }
+  .marketHero, .simpleHero, .creatorHero, .aboutHero, .sellHero, .formHero { padding: 70px 20px 42px; }
+  .marketHero { display: block; }
+  .marketSearch { margin-top: 28px; max-width: none; }
+  .marketSection { padding: 30px 20px 80px; }
+  .detailWrap { padding: 24px 20px 80px; }
+  .detailImage { height: 340px; }
+}
+
+@media (max-width: 560px) {
+  .heroCtas { align-items: stretch; flex-direction: column; }
+  .heroCtas .primary, .heroCtas .secondary { width: 100%; }
+  .heroVisual { display: block; }
+  .passportCard { margin: 0 auto; transform: rotate(1.5deg); }
+  .stats strong { font-size: 22px; }
+  .stats span { font-size: 9px; }
+  .sectionHead { display: block; }
+  .sectionHead .textLink { margin-top: 18px; }
+  .assetImage { height: 235px; }
+  .passportText h2, .section h2, .creatorTeaser h2, .cta h2 { font-size: 42px; }
+  .detailActions { display: grid; grid-template-columns: 1fr; }
+  .detailActions .primary, .detailActions .secondary { width: 100%; }
+}
