@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { RefreshCw, ShieldAlert } from "lucide-react";
 
-export default function Error({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   useEffect(() => {
     console.error("Trust.Me route error", error);
   }, [error]);
